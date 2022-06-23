@@ -1,0 +1,42 @@
+default:
+  before_script:
+    - npm install
+  image: node:lts
+  cache:
+    key:
+      files:
+        - package.lock.json
+    paths:
+      - node_modules
+
+stages:
+  - test
+  - build
+  - publish
+
+lint-test-job:
+  stage: test
+  script:
+    - npm run lint
+
+unit-test-job:
+  stage: test
+  script:
+    - npm run test
+
+build-job:
+  stage: build
+  script:
+    - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> .npmrc
+    - npm run build
+  artifacts:
+    paths:
+      - "dist"
+      - ".npmrc"
+
+publish-npm:
+  stage: publish
+  script:
+    - npm publish --access public
+  dependencies:
+    - build-job

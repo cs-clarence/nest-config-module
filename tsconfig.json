@@ -1,0 +1,25 @@
+{
+  "extends": "./node_modules/@rencedm112/tsconfig/tsconfig.node.json",
+
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.mts",
+    "src/**/*.cts",
+    "src/**/*.js",
+    "src/**/*.cjs",
+    "src/**/*.mjs",
+    "src/**/*.json",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ],
+
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "paths": {
+      "$*": ["./src/*"]
+    },
+    "outDir": "dist"
+  }
+}

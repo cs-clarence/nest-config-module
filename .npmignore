@@ -1,0 +1,9 @@
+src
+prettier.config.js
+vite.config.js
+tsconfig.json
+tsconfig.types.json
+.eslintrc.cjs
+pnpm-lock.yaml
+.gitlab-ci.yml
+.gitignore
